@@ -40,9 +40,16 @@ img {
   height: 80px;
 }
 
+.title {
+  font-family: Arial, Helvetica, sans-serif;
+  color: orangered;
+  margin: 12px 0 32px;
+}
+
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
+  cursor: pointer;
 }
 
 /* flip the pane when hovered */

@@ -29,8 +29,8 @@ field.addEventListener("click", function (e) {
   const target = e.target;
 
   if (target.classList.contains("flip-container")) {
-    target.classList.add("active");
-    target.classList.add("flipped");
+    target.classList.remove("active", "flipped");
+    target.classList.add("active", "flipped");
 
     let checkedCards = [];
     cardsInField = Array.from(field.children);
@@ -42,13 +42,21 @@ field.addEventListener("click", function (e) {
       checkedCards.reduce((first, curr, index, arr) => {
         if (first.dataset.name === curr.dataset.name) {
           cardsLength -= 2;
-          arr.forEach((item) => {
-            item.classList.remove("active", "card");
-            item.classList.add("hidden");
-          });
+          setTimeout(
+            () =>
+              arr.forEach((item) => {
+                item.classList.remove("active");
+                item.classList.add("hidden");
+              }),
+            1000
+          );
           checkedCards = [];
         } else {
-          arr.forEach((item) => item.classList.remove("active"));
+          arr.forEach((item) => item.classList.remove("active")),
+            setTimeout(
+              () => arr.forEach((item) => item.classList.remove("flipped")),
+              1000
+            );
           checkedCards = [];
         }
       });
