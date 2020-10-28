@@ -1,3 +1,14 @@
+let cards = [
+  "ghost",
+  "hat",
+  "headstone",
+  "jaw",
+  "knife",
+  "pumpkin",
+  "skull",
+  "zombie",
+];
+
 const doubleCards = (cards) => [...cards, ...cards.slice()];
 const shuffleCards = (cards) => cards.sort(() => 0.5 - Math.random());
 const field = document.querySelector(".field");
@@ -7,14 +18,14 @@ shuffleCards(cards);
 
 function createCardsFromArr(arr) {
   let fragment = "";
-  arr.forEach(({ name, src }) => {
-    return (fragment += `<div class="flip-container" data-name="${name}">
+  arr.forEach((img) => {
+    return (fragment += `<div class="flip-container" data-name="${img}">
 	 <div class="flipper">
 		 <div class="front">
 		 <img src="./img/pumpkin-front.png" class="front-img"/>
 		 </div>
 		 <div class="back">
-		 <div class="card"><img src="${src}" /></div>
+		 <div class="card"><img src="./img/${img}.png" /></div>
 		 </div>
 	 </div>
 	</div>`);
